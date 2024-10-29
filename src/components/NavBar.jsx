@@ -6,7 +6,9 @@ export default class NavBar extends Component {
       <nav className="navbar bg-body-tertiary">
         <div className="container-fluid">
           <span className="navbar-brand mb-0 h1">Navbar</span>
-          <span className="badge bg-secondary ms-2">{3}</span>
+          <span className="badge bg-secondary ms-2">
+            {this.props.totalCount}
+          </span>
         </div>
       </nav>
     );

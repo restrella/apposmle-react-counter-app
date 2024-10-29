@@ -9,7 +9,7 @@ export default class Counter extends Component {
   state = {
     name: "Hello Wolrd",
     image: "http://picsum.photos/200",
-    count: 0,
+    // count: 0,
     count2: 1,
     tags: ["tag1", "tag2", "tag3"],
   };
@@ -23,14 +23,14 @@ export default class Counter extends Component {
   }
 
   formatText() {
-    if (this.state.count > 0) {
-      return this.state.count;
+    if (this.props.counter.value > 0) {
+      return this.props.counter.value;
     }
     return "Zero";
   }
 
   getClassName() {
-    if (this.state.count > 0) {
+    if (this.props.counter.value > 0) {
       return "badge bg-primary";
     } else {
       return "badge bg-warning text-dark";
@@ -49,20 +49,6 @@ export default class Counter extends Component {
     );
   }
 
-  handleIncrement() {
-    // this.state.count++;
-
-    this.setState({ ...this.state, count: this.state.count + 1 });
-    // console.log("count", this.state.count);
-  }
-
-  handleDecrement() {
-    // this.state.count++;
-
-    this.setState({ count: this.state.count - 1 });
-    // console.log("count", this.state.count2);
-  }
-
   render() {
     console.log("props", this.props);
     return (
@@ -70,13 +56,13 @@ export default class Counter extends Component {
         <div className="m-4">
           <span className={this.getClassName()}>{this.formatText()}</span>
           <button
-            disabled={this.state.count == 0}
-            onClick={() => this.handleDecrement()}
+            disabled={this.props.counter.value == 0}
+            onClick={() => this.props.onDecrement(this.props.counter.id)}
             className="btn btn-primary ms-4">
             -
           </button>
           <button
-            onClick={() => this.handleIncrement()}
+            onClick={() => this.props.onIncrement(this.props.counter.id)}
             className="btn btn-secondary ms-1">
             +
           </button>
