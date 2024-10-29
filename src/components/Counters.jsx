@@ -2,6 +2,22 @@ import React, { Component } from "react";
 import Counter from "./Counter";
 
 export default class Counters extends Component {
+  constructor() {
+    super();
+    console.log("enter constructor");
+  }
+
+  componentDidMount() {
+    console.log("did mount");
+    this.props.onIncrement(1);
+  }
+  componentWillUnmount() {
+    console.log("unmount");
+  }
+
+  componentDidUpdate() {
+    console.log("update");
+  }
   render() {
     // const props = this.props;
     // console.log("props", props);

@@ -76,6 +76,7 @@ const App = () => {
     { id: 2, value: 0 },
     { id: 3, value: 0 },
   ]);
+  const [paymentPage, setPaymentPage] = useState(false);
 
   const handleDelete = (id) => {
     setCounters((prevState) =>
@@ -105,22 +106,35 @@ const App = () => {
     );
   };
 
+  const handleTogglePage = () => {
+    setPaymentPage((prevState) => !prevState);
+  };
+
   const getCountersWithValueLength = () => {
     return counters.filter((counter) => counter.value > 0).length;
   };
 
   return (
     <div>
-      <NavBar totalCount={getCountersWithValueLength()}></NavBar>
-      <div className="container">
-        <Counters
-          counters={counters}
-          onIncrement={handleIncrement}
-          onDecrement={handleDecrement}
-          onDelete={handleDelete}>
-          Hello
-        </Counters>
-      </div>
+      <NavBar
+        onTogglePage={handleTogglePage}
+        totalCount={getCountersWithValueLength()}></NavBar>
+
+      {paymentPage ? (
+        <div>
+          <h1>Payment Page</h1>
+        </div>
+      ) : (
+        <div className="container">
+          <Counters
+            counters={counters}
+            onIncrement={handleIncrement}
+            onDecrement={handleDecrement}
+            onDelete={handleDelete}>
+            Hello
+          </Counters>
+        </div>
+      )}
     </div>
   );
 };
