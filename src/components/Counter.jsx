@@ -6,13 +6,13 @@ export default class Counter extends Component {
   // this.props - from parent down here
 
   //   name = "Hello World";
-  state = {
-    name: "Hello Wolrd",
-    image: "http://picsum.photos/200",
-    // count: 0,
-    count2: 1,
-    tags: ["tag1", "tag2", "tag3"],
-  };
+  //   state = {
+  //     name: "Hello Wolrd",
+  //     image: "http://picsum.photos/200",
+  //     // count: 0,
+  //     count2: 1,
+  //     tags: ["tag1", "tag2", "tag3"],
+  //   };
 
   constructor() {
     super();
